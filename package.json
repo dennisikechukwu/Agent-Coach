@@ -9,9 +9,26 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
+    "@google/generative-ai": "^0.24.1",
+    "@metamask/connect-evm": "^0.9.1",
+    "@rainbow-me/rainbowkit": "^2.2.10",
+    "@supabase/supabase-js": "^2.101.1",
+    "@tanstack/react-query": "^5.96.1",
+    "@walletconnect/ethereum-provider": "^2.23.9",
+    "@xmtp/react-sdk": "^9.0.0",
+    "@xmtp/xmtp-js": "^13.0.4",
+    "chart.js": "^4.5.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.7.0",
     "next": "16.2.2",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.5.0",
+    "viem": "^2.47.6",
+    "wagmi": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
