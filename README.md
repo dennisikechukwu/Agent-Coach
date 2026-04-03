@@ -441,6 +441,81 @@ In the **AI Chat Widget**, type:
 ---
 
 
+## ⚠️ Current Limitations (Hackathon MVP)
+
+### Data Model Mismatches
+- **types.ts** defines detailed User/Goal/Checkin interfaces, but **schema.sql** has minimal fields
+  - `types.ts` expects: user_id, goal_type, frequency, target_days, completed_days, payment_status, verification_score, etc.
+  - **schema.sql** only has: id, wallet_address, title, stake_amount, duration_days, status
+  - **Impact:** Dashboard shows mock data instead of real DB values
+  - **Fix for production:** Either expand schema or narrow types.ts to match
+
+### Financial Features (Simulated)
+- ❌ MoonPay payment flow is **simulated** (2-second delay, then success)
+- ❌ No actual blockchain transactions for stakes
+- ❌ No escrow logic or failed-goal refunds
+- ❌ No payment verification with MoonPay webhooks
+- **Status:** Ready for Hackathon, needs real implementation for production
+
+### Photo Verification
+- ✅ Gemini Vision works, but has simple fallback (80%+ things pass)
+- ❌ No appeal mechanism if users dispute verification
+- ❌ No human review process
+- ⚠️ Currently saves only metadata, not actual images (privacy + cost)
+
+### Dashboard / UX
+- ❌ Historical data is **mocked** (not from real DB)
+- ❌ User stats (consistency, streaks) are not calculated
+- ❌ No loading skeletons on dashboard widgets
+- ❌ No error states or retry logic
+- ❌ Analytics tab minimal (placeholder)
+
+### Backend / Infrastructure
+- ❌ No rate limiting on API endpoints
+- ❌ No request validation (wallet address format, etc.)
+- ❌ No audit logging for financial transactions
+- ❌ `/api/sync` endpoint is incomplete placeholder
+- ❌ No testing suite (unit, integration, E2E)
+
+### Security (Non-Production)
+- ✅ RLS is enabled, but permissive (all service role access)
+- ❌ No CSRF protection
+- ❌ API keys not rotated
+- ❌ Supabase service role key exposed in server-side code (acceptable for hackathon, not for production)
+
+---
+
+## 🗺 Future Roadmap
+
+### Phase 2: Post-Hackathon Production
+- [ ] Fix schema ↔ types mismatch
+- [ ] Implement real MoonPay payment callbacks
+- [ ] Implement blockchain transactions (USDC transfers on Base)
+- [ ] Add escrow smart contract for stakes
+- [ ] Real-time goal tracking + on-chain settlement
+- [ ] Human review for disputed photo verifications
+- [ ] Proper RLS policies per user
+- [ ] Rate limiting + API security
+
+### Phase 3: Community & Social
+- [ ] Leaderboards (global + friend groups)
+- [ ] Team goals (compete together)
+- [ ] Social shares (prove progress on Twitter/LinkedIn)
+- [ ] Referral rewards
+
+### Phase 4: Advanced AI Features
+- [ ] Custom AI persona selection
+- [ ] Multi-modal prompting (text + image + voice)
+- [ ] Predictive analytics ("You're likely to fail this goal")
+- [ ] AI-suggested interventions mid-goal
+
+### Phase 5: Multi-Chain & Interop
+- [ ] Cross-chain goal settlement
+- [ ] Support for other stablecoins (USDT, DAI, FRAX)
+- [ ] Governance token for protocol improvements
+
+---
+
 ## 🤝 Contributing
 
 This is a hackathon project, but we welcome improvements:
